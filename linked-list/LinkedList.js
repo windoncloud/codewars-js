@@ -24,7 +24,18 @@ function LinkedList() {
     this.insert = function(position, element){};
     this.removeAt = function(position){};
     this.remove = function(element){};
-    this.indexOf = function(element){};
+    this.indexOf = function(element){
+        var current = head,
+            index = 0;
+        while (current) {
+            if(element === current.element){
+                return index;
+            }
+            index++;
+            current = current.next;
+        }
+        return -1;
+    };
     this.isEmpty = function(){
         return length === 0;
     };
