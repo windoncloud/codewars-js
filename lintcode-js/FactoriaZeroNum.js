@@ -67,3 +67,4 @@ const trailingZerosFinal = function (n) {
 
 console.log('trailingZeros', trailingZerosFinal(115))
 
+// https://www.jiuzhang.com/solution/trailing-zeros/#tag-other-lang-javascript
