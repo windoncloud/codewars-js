@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p> collect rain drops [0,1,0,2,1,0,1,3,2,1,2,1]</p>
+<img src="./img/rainwatertrap.png" alt="">
+<script>
+    /**
+     * @param {number[]} height
+     * @return {number}
+     */
+    var trap = function (height) {
+        let left = 0, right = height.length - 1
+        let count = 0
+        let leftMax = 0, rightMax = 0
+        while (left <= right) {
+            leftMax = Math.max(leftMax, height[left])
+            rightMax = Math.max(rightMax, height[right])
+            if (leftMax < rightMax) {
+                count += leftMax - height[left]
+                left++
+            } else {
+                count += rightMax - height[right]
+                right--
+            }
+        }
+        return count
+    };
+    let target = [0,1,0,2,1,0,1,3,2,1,2,1]
+    let result = trap(target)
+    console.log('result', result)
+</script>
+</body>
+</html>
