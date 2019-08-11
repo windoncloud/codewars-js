@@ -5,10 +5,40 @@
 //
 // Example: n = 86240 should return "(2**5)(5)(7**2)(11)"
 // Link: https://www.codewars.com/kata/54d512e62a5e54c96200019e/train/javascript
-
-var primes = function (number) {
-    let result = ''
-    let fn = function () {
+/**
+ * not the answer, just another expression
+ * @param number
+ * @returns {function(...[*]=): function(...[*]=)}
+ */
+var primes = function (...number) {
+    let lastRes = 1
+    console.log('111')
+    let fn = function (...subArgs) {
+        // console.log('subArgs', subArgs)
+        // let aa = [...subArgs]
+        // console.log('aa', aa)
+        lastRes *= calcNum(subArgs)
+        console.log('222')
         return fn
     }
+    function calcNum(args) {
+        let temp = 0
+        if (args.length > 1) {
+            temp = args.reduce((a, b) => {
+                return Math.pow(a, b)
+            })
+        } else {
+            temp = args[0]
+        }
+        return temp
+    }
+    fn.toString = function () {
+        console.log('444')
+        return lastRes
+    }
+    console.log('333')
+    return fn(...number)
 }
+
+let res = primes(2,5)(5)(7,2)(11)
+console.log('res', res)
