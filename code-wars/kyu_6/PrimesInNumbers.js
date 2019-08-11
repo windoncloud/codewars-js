@@ -42,3 +42,30 @@ var primes = function (...number) {
 
 let res = primes(2,5)(5)(7,2)(11)
 console.log('res', res)
+
+// https://loliko.me/archives/code-wars-Primes-in-numbers.html
+var prime_factors = function(n){
+    let number = n;
+    let prime_numbers = [];
+    let factor = 2;
+    let cnt;
+    while (number > 1) {
+        cnt = 0;
+        while (number % factor == 0) {
+            number /= factor;
+            cnt += 1;
+        }
+        if (cnt > 0) {
+            if (cnt > 1) {
+                // prime_numbers.push(format!("({}**{})", factor, cnt));
+                prime_numbers.push(`(${factor}**${cnt})`);
+            } else {
+                // prime_numbers.push(format!("({})", factor);
+                prime_numbers.push(`(${factor})`);
+            }
+        }
+        factor += 1;
+    }
+    return prime_numbers.join("")
+}
+console.log('prime_factores', prime_factors(86240))
