@@ -69,3 +69,39 @@ var prime_factors = function(n){
     return prime_numbers.join("")
 }
 console.log('prime_factores', prime_factors(86240))
+// best practices
+// https://www.codewars.com/kata/54d512e62a5e54c96200019e/solutions/javascript
+function primeFactors(n){
+    for (var i=2, res="", f; i <= n; i++) {
+        f=0;
+        while (n%i == 0) { f++; n/=i }
+        res += f ? "(" + ( f>1 ? i+"**"+f  : i ) +")" : ""
+    }
+    return res || "("+n+")"
+}
+
+function primeFactors2(n){
+    for(var s = '', d = 2;n>1;d++) {
+        for (var k = 0;n%d == 0;k++, n/=d);
+        s += k ? (k==1 ? `(${d})` : `(${d}**${k})`) : '';
+    }
+    return s
+}
+
+const primeFactors3 = n => {
+    if (n < 2) return `(${n})`;
+    let factors = '';
+    for ( let i = 2; i <= n; i++) {
+        let count = 0;
+        while ( n%i === 0 ) {
+            count++;
+            n /= i;
+        }
+        if (count) {
+            factors += `(${i}`;
+            if (count > 1) factors += `**${count}`;
+            factors += `)`;
+        }
+    }
+    return factors;
+}
