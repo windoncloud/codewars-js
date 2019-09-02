@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img src="./img/shallowCopy.jpeg" alt="">
+<img src="./img/deepCopy.jpeg" alt="">
+<p>1、JSON.parse(JSON.stringify());</p>
+</body>
+<script>
+    let _source = {a: 1, b: 2, c: {d: 3}}
+    // shallow
+    function clone(target) {
+        let cloneTarget = {};
+        for (const key in target) {
+            cloneTarget[key] = target[key];
+        }
+        return cloneTarget;
+    }
+    let _map = clone(_source)
+
+    function clone2(target) {
+        if (typeof target === 'object') {
+            let cloneTarget = Array.isArray(target) ? [] : {};
+            for (const key in target) {
+                cloneTarget[key] = clone(target[key]);
+            }
+            return cloneTarget;
+        } else {
+            return target;
+        }
+    }
+
+    // wrong in this way 循环引用
+    const target = {
+        field1: 1,
+        field2: undefined,
+        field3: {
+            child: 'child'
+        },
+        field4: [2, 4, 8]
+    };
+    target.target = target;
+
+    // function clone3(target, map = new Map()) {
+    function clone3(target, map = new WeakMap()) {
+        if (typeof target === 'object') {
+            let cloneTarget = Array.isArray(target) ? [] : {};
+            if (map.get(target)) {
+                console.log('sad1', target)
+                return map.get(target);
+            }
+            map.set(target, cloneTarget);
+            for (const key in target) {
+                console.log('sad2', target)
+                cloneTarget[key] = clone(target[key], map);
+            }
+            return cloneTarget;
+        } else {
+            return target;
+        }
+    };
+
+    let _target = clone2(target)
+    console.log('_target', _target)
+
+</script>
+<!--https://juejin.im/post/5d6aa4f96fb9a06b112ad5b1-->
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function example(foo) {
+        var arr = [];
+        var result;
+        var begin = false;
+        return function sum (n) {
+            arr.push(n);
+            if(!begin) {
+                begin = true;
+                while (arr.length){
+                    result = foo(arr.shift());
+                }
+                return result;
+            }
+        };
+    }
+    var count = example(function (n) {
+        return n < 10E5 ? count(n * 2) : n;
+    });
+    count(1);
+</script>
+</html>
