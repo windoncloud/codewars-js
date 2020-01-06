@@ -25,6 +25,7 @@ var myWrongMultiply = function(num1, num2) {
     return String(Number(num1) * Number(num2))
 };
 
+// going on
 var multiply = function(num1, num2) {
 
 };
