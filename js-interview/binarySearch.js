@@ -28,7 +28,7 @@ function binarySearch2(target,arr,start,end, targetIndex, targetNum) {
     return -1;
 }
 
-binarySearch2(7, [1,2,3,4,5,7,7,7,9,10,11])
+console.log('the number in first index', binarySearch2(7, [1,2,3,4,5,7,7,7,9,10,11]))
 
 function elementCountInArray(arr) {
     var map = {};
