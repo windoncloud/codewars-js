@@ -21,6 +21,5 @@ function fn(n){
     newStr = newStr.replace(/零(千|百|十)/g,'零').replace(/(零)+/g,'零').replace(/零(亿|万)/g,'$1');
     return newStr;
 }
-
 // console.log('fn', fn('123123333334'))
 console.log('fn', fn('1'))
