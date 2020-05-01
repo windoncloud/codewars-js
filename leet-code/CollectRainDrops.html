@@ -9,6 +9,31 @@
 <img src="./img/rainwatertrap.png" alt="">
 <div id="result"></div>
 <script>
+    let target = [0,1,0,2,1,0,1,3,2,1,2,1]
+    /**
+     * dynamic programming
+     */
+    var trap1 = function (height) {
+        let ans = 0
+        let len = height.length
+        if (len < 3) return 0
+        let left_max_arr = []
+        let right_max_arr = []
+        left_max_arr[0] = height[0]
+        right_max_arr[len-1] = height[len-1]
+        for (let i = 1; i < len; i++) {
+            left_max_arr[i] = Math.max(left_max_arr[i-1], height[i])
+        }
+        for (let i = len - 2; i >=0; i--) {
+            right_max_arr[i] = Math.max(right_max_arr[i+1], height[i])
+        }
+        for (let i = 0; i < len; i++) {
+            ans += Math.min(left_max_arr[i], right_max_arr[i]) - height[i]
+        }
+        return ans
+    }
+    let result1 = trap1(target)
+    console.log('result1', result1)
     /**
      * @param {number[]} height
      * @return {number}
@@ -17,6 +42,8 @@
         let left = 0, right = height.length - 1
         let count = 0
         let leftMax = 0, rightMax = 0
+        const _debugArr = []
+        const _debugCount = []
         while (left <= right) {
             leftMax = Math.max(leftMax, height[left])
             rightMax = Math.max(rightMax, height[right])
@@ -27,13 +54,20 @@
                 count += rightMax - height[right]
                 right--
             }
+            _debugArr.push([left, right])
+            _debugCount.push(count)
         }
+        console.log('_height-len', height.length)
+        console.log('_debugArr', _debugArr)
+        console.log('_debugCount', _debugCount)
         return count
     };
-    let target = [0,1,0,2,1,0,1,3,2,1,2,1]
     let result = trap(target)
     console.log('result', result)
     document.getElementById('result').innerHTML = 'The result is ' + result
+
+    // https://leetcode-cn.com/problems/trapping-rain-water/solution/
+    // https://leetcode-cn.com/problems/trapping-rain-water/solution/jie-yu-shui-by-leetcode/
 </script>
 </body>
 </html>
