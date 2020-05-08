@@ -11,8 +11,11 @@
 <script>
     let target = [0,1,0,2,1,0,1,3,2,1,2,1]
     /**
-     * dynamic programming
+     * dynamic programming 动态规划
      */
+    // 思路，从左至右，从右至左分别依次扫描，记录当前柱子的最高处。
+    // 累加左右扫描高度的高度差减去当前数组的高度值
+    // 时间复杂度 O(n) 空间复杂度 O(n)
     var trap1 = function (height) {
         let ans = 0
         let len = height.length
@@ -34,6 +37,34 @@
     }
     let result1 = trap1(target)
     console.log('result1', result1)
+    /**
+     * 栈的应用
+     */
+    // 当前条形块小于或等于栈顶的条形块，我们就将条形快的索引引入栈，意思是
+    // 当前的条形块被栈中的前一个条形块界定，如果我们发现一个条形块长于栈顶，
+    // 我们可以确定栈顶的条形块被当前条形块和栈前的一个条形块界定，因此我们
+    // 可以弹出栈顶元素并且累加答案到 ans
+    var trap2 = function (height) {
+        let ans = 0, current = 0
+        let st = []
+        while (current < height.length) {
+            while (st.length !== 0 && height[current] > height[st[0]]) {
+                let top = st[0]
+                st.pop()
+                if (st.length === 0) {
+                    break
+                }
+                let distance = current - st[0] - 1
+                let bounded_height = Math.min(height[current], height[st[0]]) - height[top]
+                ans += distance * bounded_height
+            }
+            st.push(current++)
+        }
+        return ans
+    }
+    // 结果不对，待完善
+    let result2 = trap2(target)
+    console.log('result2', result2)
     /**
      * @param {number[]} height
      * @return {number}
