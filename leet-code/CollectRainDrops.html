@@ -95,6 +95,7 @@
                 if (st.length === 0) {
                     break
                 }
+                // 当前低洼右边界减去当前栈顶元素左边界
                 let distance = current - st[st.length - 1] - 1
                 let bounded_height = Math.min(height[current], height[st[st.length - 1]]) - height[top]
                 ans += distance * bounded_height
