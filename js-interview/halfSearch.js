@@ -2,13 +2,15 @@
 function halfSearch(arr = [1, 2, 3, 4, 5, 7, 9], target = 5) {
     let left = 0, right = arr.length -1; // 在 [left, ..., right] 范围内寻找 target (循环不变量)
     while (left <= right) { // 当left == right 时，区间[left, ..., right] 是有效的
-        let mid = Math.floor((left + right)/ 2) // 中间数组索引
-        if (arr[mid] < target) {
-            left = mid + 1 //  [mid + 1, ... ,right]
-        } else if(arr[mid] > target) {
-            right = mid - 1 // [left, ... ,mid - 1]
-        } else {
+        // let mid = Math.floor((left + right)/ 2) // 中间数组索引
+        let mid = Math.floor(left + (right - left) / 2) // 防止整型溢出
+        if(arr[mid] === target) {
             return mid
+        } else if (arr[mid] < target) {
+            left = mid + 1 //  [mid + 1, ... ,right]
+        } else {
+            // arr[mid] > target
+            right = mid - 1 // [left, ... ,mid - 1]
         }
     }
     return -1
