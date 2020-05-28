@@ -7,6 +7,7 @@ function MoveZeroes (nums = [1,0,2,0,3,0,0,5,0]) {
             if(i !== k) {
                 // swap(nums[k++], nums[i])
                 swap(nums, k, i)
+                k++
             } else {
                 k++
             }
@@ -16,7 +17,7 @@ function MoveZeroes (nums = [1,0,2,0,3,0,0,5,0]) {
         let temp = nums[k]
         nums[k] = nums[i]
         nums[i] = temp
-        k++
+        // k++ => 错误写法，不会改变原始k值，k始终为1
     }
     return nums
 }
