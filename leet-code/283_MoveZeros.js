@@ -17,7 +17,7 @@ function MoveZeroes (nums = [1,0,2,0,3,0,0,5,0]) {
         let temp = nums[k]
         nums[k] = nums[i]
         nums[i] = temp
-        // k++ => 错误写法，不会改变原始k值，k始终为1
+        // k++ => 错误写法，不会改变原始k值，k始终为1, 传入对象是引用类型会改变，传入值不是
     }
     return nums
 }
