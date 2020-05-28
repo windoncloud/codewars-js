@@ -11,11 +11,9 @@ function MoveZeroes (nums = [1,0,2,0,3,0,0,5,0]) {
             if(i !== k) {
                 // swap(nums[k++], nums[i])
                 swap(nums, k, i)
-                k++
-            } else {
-                // 索引相同说明前面k项都为0，此时不交换,直接++完事
-                k++
             }
+            // else 索引相同说明前面k项都为0，此时不交换,直接++完事
+            k++
         }
     }
     function swap(nums, k, i) {
