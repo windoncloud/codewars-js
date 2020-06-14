@@ -4,10 +4,12 @@
 * parameter: data:本节点的数据；left：做节点；right：右节点
 */
 // 二叉搜索树 https://segmentfault.com/a/1190000017798199?utm_source=tag-newest
-// 各种二叉树定义 https://www.cnblogs.com/-citywall123/p/11788764.html
 // 若任意节点的左子树不空，则左子树上所有节点的值均小于它的根节点的值；
 // 若任意节点的右子树不空，则右子树上所有节点的值均大于它的根节点的值；
 // 任意节点的左、右子树也需要满足左边小右边大的性质
+// 满二叉树、完全二叉树，平衡二叉树, 最优二叉树（哈夫曼树）↘️ ↓ ⬇️ ↙ ↙️
+// 各种二叉树定义 https://www.cnblogs.com/-citywall123/p/11788764.html
+
 function Node(data,left,right){
     this.data = data;
     this.left = left;
