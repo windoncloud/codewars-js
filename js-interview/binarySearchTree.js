@@ -9,6 +9,7 @@
 // 任意节点的左、右子树也需要满足左边小右边大的性质
 // 满二叉树、完全二叉树，平衡二叉树, 最优二叉树（哈夫曼树）↘️ ↓ ⬇️ ↙ ↙️
 // 各种二叉树定义 https://www.cnblogs.com/-citywall123/p/11788764.html
+// 根节点、中间节点、叶子节点
 
 function Node(data,left,right){
     this.data = data;
