@@ -10,7 +10,12 @@
 // 满二叉树、完全二叉树，平衡二叉树, 最优二叉树（哈夫曼树）↘️ ↓ ⬇️ ↙ ↙️
 // 各种二叉树定义 https://www.cnblogs.com/-citywall123/p/11788764.html
 // 根节点、中间节点、叶子节点
-
+// 二叉搜索树http://www.imooc.com/learn/888
+// 遍历方法
+// 前序=>中 左 右
+// 中序=>左 中 右
+// 后序=>左 右 中
+// 记忆方法:都是先左后右,其次前中后代表"中"字的位置
 function Node(data,left,right){
     this.data = data;
     this.left = left;
