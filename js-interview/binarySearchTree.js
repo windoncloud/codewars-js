@@ -16,15 +16,6 @@
 // 中序=>左 中 右
 // 后序=>左 右 中
 // 记忆方法:都是先左后右,其次前中后代表"中"字的位置
-function Node(data,left,right){
-    this.data = data;
-    this.left = left;
-    this.right = right;
-}
-function BST(){
-    this.root = null;
-    this.insert = insert;
-}
 /*
 * parameter: data:本节点的数据；
 * 创建节点示例并插入到二叉树的正确位置
@@ -112,4 +103,4 @@ bst.insert(5);
 bst.insert(3);
 bst.insert(7);
 bst.insert(2);
-
+console.log('bst ->', bst)
