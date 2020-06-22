@@ -9,14 +9,12 @@
  * @return {number}
  */
 var maxSubArray = function(nums) {
-    let max = -Infinity
-    let sum = 0
-    let i = 0
+    let max_sum = nums[0]
+    let cur_sum = nums[0]
     for (let i = 0; i < nums.length; i++) {
-        sum += nums[i]
-        i = sum > max ? ++i : i
-        max = sum > max ? sum : max
+        cur_sum = Math.max(nums[i], cur_sum + nums[i]) // important
+        max_sum = Math.max(cur_sum, max_sum)
     }
-    return max
+    return max_sum
 };
 console.log('[-2,1,-3,4,-1,2,1,-5,4] ->', maxSubArray([-2,1,-3,4,-1,2,1,-5,4]))
