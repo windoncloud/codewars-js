@@ -11,8 +11,15 @@
 var maxSubArray = function(nums) {
     let max_sum = nums[0]
     let cur_sum = nums[0]
+    // let targetLeftIndex = 0
     for (let i = 0; i < nums.length; i++) {
+        // if ((cur_sum + nums[i]) > nums[i]) {
+        //     targetLeftIndex = i
+        // } else {
+        //
+        // }
         cur_sum = Math.max(nums[i], cur_sum + nums[i]) // important
+        // ⬆️ 若当前指针所指的元素之前的和小于0，则丢弃当前元素之前的数列
         max_sum = Math.max(cur_sum, max_sum)
     }
     return max_sum
