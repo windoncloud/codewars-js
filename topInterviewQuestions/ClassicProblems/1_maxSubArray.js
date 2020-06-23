@@ -19,9 +19,11 @@ var maxSubArray = function(nums) {
         //
         // }
         cur_sum = Math.max(nums[i], cur_sum + nums[i]) // important
-        // ⬆️ 若当前指针所指的元素之前的和小于0，则丢弃当前元素之前的数列
+        // 存疑 ⬆️ 若当前指针所指的元素之前的和小于0，则丢弃当前元素之前的数列, nums[i] > cur_sum + nums[i]
+        // ⬆️ 若当前指针所指的元素与之前的和小于当前元素，则丢弃当前元素之前的数列
         max_sum = Math.max(cur_sum, max_sum)
     }
     return max_sum
 };
 console.log('[-2,1,-3,4,-1,2,1,-5,4] ->', maxSubArray([-2,1,-3,4,-1,2,1,-5,4]))
+console.log('[-3, -2, -100] ->', maxSubArray([-3,-2,-100])) // -2 > -3 + -2, -100 > -5 + - 100
