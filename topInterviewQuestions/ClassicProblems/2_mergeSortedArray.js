@@ -16,6 +16,7 @@
  * @param {number} n
  * @return {void} Do not return anything, modify nums1 in-place instead.
  */
+// 合并两个有序数组 merge-sorted-array 88
 var merge = function(nums1, m, nums2, n) {
     let len1 = m - 1;
     let len2 = n - 1;
