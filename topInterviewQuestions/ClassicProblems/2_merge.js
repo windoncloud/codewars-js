@@ -23,15 +23,23 @@ var merge = function(nums1, m, nums2, n) {
         // 注意--符号在后面，表示先进行计算再减1，这种缩写缩短了代码
         nums1[len--] = nums1[len1] > nums2[len2] ? nums1[len1--] : nums2[len2--];
     }
-    function arrayCopy(extraArr, extraArrIndex, targetArr, targetArrIndex, length) {
-        targetArr.splice(targetArrIndex, length, ...extraArr.slice(extraArrIndex, extraArrIndex + length));
-    }
+
     // add missing elements from nums2
-    // 表示将nums2数组从下标0位置开始，拷贝到nums1数组中，从下标0位置开始，长度为len2+1
-    arrayCopy(nums2, 0, nums1, 0, len2 + 1);
+    // 将nums2剩余的数字按nums1[...nums2[len2 + 1], ...]copy到nums1中
+    if ((len2 + 1) > 0) {
+        function arrayCopy(extraArr, extraArrIndex, targetArr, targetArrIndex, length) {
+            targetArr.splice(targetArrIndex, length, ...extraArr.slice(extraArrIndex, extraArrIndex + length));
+        }
+        arrayCopy(nums2, 0, nums1, 0, len2 + 1);
+    }
 };
 const arr1 = [1,2,3,0,0,0]
 const arr2 = [2,5,6]
-merge(arr1, 3, [2,5,6], 3)
+merge(arr1, 3, arr2, 3)
 console.log('arr1 ->', arr1)
 console.log('arr2 ->', arr2)
+const arr3 = [7,8,9,0,0,0]
+const arr4 = [4,5,6]
+merge(arr3, 3, arr4, 3)
+console.log('arr3 ->', arr3)
+console.log('arr4 ->', arr4)
