@@ -13,7 +13,7 @@
  * @return {string}
  */
 var minWindow = function(s, t) {
-    let minLen = Infinity, resL // minLen初始尽量大，第一次就能被改写
+    let minLen = Infinity, resL // minLen初始尽量大，第一次就能被改写, resL值需要为undefined, 没有匹配到最后substring会为空
     let map = {} // 存储目标字符，和对应的缺失个数
     let missingType = 0 // 当前缺失的字符种类数
     for (const char of t) { // t为baac的话，map为{a:2,b:1,c:1}
@@ -22,8 +22,6 @@ var minWindow = function(s, t) {
             map[char] = 1
         } else { map[char]++ }
     }
-    console.log('map ->', map)
-    console.log('missingType ->', missingType)
     let left = 0, right = 0 // 左右指针
     for (; right < s.length; right++) { // right++ 扩张窗口，超出s串就结束循环
         let rightChar = s[right] // 获取right指向的新字符
