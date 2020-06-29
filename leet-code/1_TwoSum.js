@@ -11,7 +11,7 @@
 var twoSum = function(nums, target) {
     const existMap = {}
     for (let i = 0; i < nums.length; i++) {
-        if (existMap[target - nums[i]] >= 0) {
+        if (existMap[target - nums[i]] >= 0) { // !== undefined more clearly
             return [existMap[target - nums[i]], i]
         }
         existMap[nums[i]] = i
