@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="./5_btOrderTraversal.js"></script>
+<script>
+    // https://www.cnblogs.com/cangqinglang/p/11307369.html // 参考
+    function TreeNode(val) {
+        this.val = val;
+        this.left = this.right = null;
+    }
+    //  二叉树：[3,9,20,null,null,15,7],
+    //  3
+    //  / \
+    // 9  20
+    //   /  \
+    //  15   7
+    var createTree = function () {
+        let binaryTree = new TreeNode('3');
+        binaryTree.left = new TreeNode('9');
+        binaryTree.right = new TreeNode('20');
+        binaryTree.right.left = new TreeNode('15');
+        binaryTree.right.right = new TreeNode('7');
+        return binaryTree;
+    }
+    const theTree = createTree()
+    console.log('theTree ->', theTree)
+    console.log('levelOrder(theTree) ->', levelOrder(theTree))
+
+</script>
+</html>
