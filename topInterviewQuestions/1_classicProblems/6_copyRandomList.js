@@ -21,6 +21,7 @@
  * @param {Node} head
  * @return {Node}
  */
+// 注意 temp 引用关系
 var copyRandomList = function(head) {
     if (!head) return null
     let node = new Node(),temp = node,map = new Map()
