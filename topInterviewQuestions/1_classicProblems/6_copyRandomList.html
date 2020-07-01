@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="./6_copyRandomList.js"></script>
+<script>
+    function Node(val, next, random) {
+        this.val = val;
+        this.next = next;
+        this.random = random;
+    }
+    // 输入：head = [[7,null],[13,0],[11,4],[10,2],[1,0]]
+    // 输出：[[7,null],[13,0],[11,4],[10,2],[1,0]]
+    var createLinkList = function () {
+        // 节点
+        let linkList = new Node('7');
+        linkList.next = new Node('13');
+        linkList.next.next = new Node('11');
+        linkList.next.next.next = new Node('10');
+        linkList.next.next.next.next = new Node('1');
+        // 随机指针
+        linkList.random = null // 7 - null - null
+        linkList.next.random = linkList // 13 - 0 - 7
+        linkList.next.next.random = linkList.next.next.next.next; // 11 - 4 - 1
+        linkList.next.next.next.random = linkList.next.next // 10 - 2 - 11
+        linkList.next.next.next.next.random = linkList // 1 - 0 -7
+        return linkList;
+    }
+    const theLinkedList = createLinkList()
+    console.log('theLinkedList ->', theLinkedList)
+    console.log('copyRandomList() ->', copyRandomList(theLinkedList))
+</script>
+</html>
