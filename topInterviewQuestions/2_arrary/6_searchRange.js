@@ -61,5 +61,62 @@ var searchRange = function(nums, target) {
     }
 };
 
-console.log('searchRange ->', searchRange([5,7,7,8,9,10], 8))
-console.log('searchRange ->', searchRange([5,7,7,8,8,10], 8))
+var searchRange2 = function(nums, target) {
+    let left = 0, right = nums.length - 1, mid;
+    while (left <= right) {
+        mid = (left + right) >> 1; // 相当于除以2
+        if (nums[mid] === target) break;
+        if (nums[mid] > target) right = mid - 1;
+        else left = mid + 1;
+    }
+    if(left > right) return [-1, -1];
+    let i = mid, j = mid;
+    while(nums[i] === nums[i - 1]) i--;
+    while(nums[j] === nums[j + 1]) j++;
+    return [i, j];
+};
+// 右边界版本
+var searchRange3 = function(nums, target) {
+    let mid, midL, midR;
+    // 搜索右边界
+    function searchR(left, right, target) {
+        while (left <= right) {
+            mid = (left + right) >> 1;
+            if (nums[mid] <= target) left = mid + 1;
+            else right = mid - 1;
+        }
+        return right
+    }
+    // 在区间[0, nums.length - 1搜索target的右边界midR
+    midR = searchR(0, nums.length - 1, target)
+    // midR < 0说明超过边界；nums[midR] !== target说明无此元素；
+    if (midR < 0 || nums[midR] !== target) return [-1, -1]
+    // 在区间[0, midR - 1]搜索target - 1的右边界midL
+    midL = searchR(0, midR - 1, target - 1)
+    return [midL + 1, midR]
+};
+// 左边界版本
+var searchRange4 = function (nums, target) {
+    let mid, midL, midR;
+    function searchL(left, right, target) {
+        while (left <= right) {
+            mid = (left + right) >> 1;
+            if (nums[mid] >= target) right = mid - 1;
+            else left = mid + 1;
+        }
+        return left
+    }
+    midL = searchL(0, nums.length - 1, target)
+    if (midL >= nums.length || nums[midL] !== target) return [-1, -1]
+    midR = searchL(midL + 1, nums.length - 1, target + 1)
+    return [midL, midR - 1]
+};
+console.time('searchRange1')
+console.log('searchRange1 ->', searchRange([5,7,7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,10], 8))
+console.timeEnd('searchRange1')
+console.time('searchRange2')
+console.log('searchRange2 ->', searchRange2([5,7,7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,10], 8))
+console.timeEnd('searchRange2')
+console.time('searchRange3')
+console.log('searchRange3 ->', searchRange3([5,7,7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,10], 8))
+console.timeEnd('searchRange3')
