@@ -23,7 +23,6 @@ var search = function(nums, target) {
     let end = nums.length - 1;
     while (start <= end) {
         const mid = start + ((end - start) >> 1);
-        console.log('mid ->', mid)
         if (nums[mid] === target) return mid;
         // [start, mid]有序
         // ️⚠️注意这里的等号
