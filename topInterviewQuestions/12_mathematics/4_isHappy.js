@@ -56,11 +56,11 @@ var isHappy = function(n) {
 var isHappy2 = function(n) {
     let slow = sum(n)
     let fast = sum(slow)
-    while(slow != fast){
+    while(fast != 1 && slow != fast){
         slow = sum(slow)
         fast = sum(sum(fast))
     }
-    return slow == 1
+    return fast == 1
 }
 function sum(n){
     n = n + ''
