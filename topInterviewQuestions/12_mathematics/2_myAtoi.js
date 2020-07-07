@@ -44,17 +44,21 @@ var myAtoi = function(str) {
  * @param {string} str
  * @return {number}
  */
-var strToInt = function(str) {
-    let res = str.match(/^\s*[+-]?\d+/);
+var strToInt0 = function(str) {
+    let res = str.match(/^\s*[+-]?\d+/); // /[+-]?\d+/ -> wrong for "words and 987"
+    // ? 匹配前面的子表达式零次或一次
+    // \d+：一个或多个数bai字。
+    // \d*：0个或多个数字。
+    // \s // 匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]。注意 Unicode 正则表达式会匹配全角空格符。
     if(!res) return 0;
 
-    res = str.match(/^\s*[+-]?\d+/)[0].trim();
+    res = res[0].trim();
     if(res >= Math.pow(2,31)) {
         return Math.pow(2,31) - 1;
     } else if (res <= Math.pow(-2,31)) {
         return  Math.pow(-2,31)
     } else {
-        return  res;
+        return res;
     }
 };
 
@@ -68,5 +72,9 @@ var strToInt = function(str) {
     if(res > maxValue) return maxValue;
     return res;
 };
-
+console.time('11111')
 console.log('strToInt(42)" ->', strToInt('42'))
+console.timeEnd('11111')
+console.time('22222')
+console.log('strToInt(42)" ->', strToInt0('42'))
+console.timeEnd('22222')
