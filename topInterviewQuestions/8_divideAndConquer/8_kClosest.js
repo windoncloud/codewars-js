@@ -49,7 +49,9 @@ function work(points, low, high, K) {
             }
         }
     }
-    swap(points, low, j)
+    if (low != j) {
+        swap(points, low, j)
+    }
     if (j - low + 1 < K) {
         work(points, j + 1, high, K - (j - low + 1))
     } else if(j - low + 1 > K) {
