@@ -43,5 +43,5 @@ var lastStoneWeightII = function(stones) {
     return (sum - 2 * dp[mid])
 
 };
-
+// 类似背包问题
 console.log('[2,7,4,1,8,1] = > ', lastStoneWeightII([2,7,4,1,8,1]))
