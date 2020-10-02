@@ -27,7 +27,7 @@ var mostCommonWord = function(paragraph, banned) {
         if (value === '') {
             return
         }
-        // if (value.indexOf(',') >= 0 || value.indexOf('.') >= 0) {
+        // if (value.indexOf(',') >= 0 || value.indexOf('.') >= 0 || value.indexOf('!') >= 0) {
         //     value = value.slice(0, value.length - 1)
         // }
         value = value.toLowerCase()
